@@ -14,14 +14,7 @@ if(isset($_POST["submit"])){
 		</div>";
     }
     else{
-        for($i=120;$i=0;--$i){
-            sleep(1);
-            $time ="
-            <div class='alert alert-success'>
-                <strong>PO文成功!</strong>剩餘".$i."秒文章將會發布。
-            </div>";
-        }
-        //conn_fb($comment);
+        conn_fb($comment);
 
     }
 
@@ -56,18 +49,11 @@ if(isset($_POST["submit"])){
                         <?php echo recaptcha_display();?>
                         <?php echo $error_vertify;  $error_vertify=isset($errorver)?$errorver:""; ?>
                     </center>
-
                 </div>
 
                 <div class='form-group'>
                     <input id='submit' name='submit' type='submit' class='btn btn-md btn-primary btn-block' value='發表貼文！'>
             	</div>
-                        ";
-                    }
-                    else {
-                        echo $time;
-                    }
-                ?>
 
             </form>
         </div>
