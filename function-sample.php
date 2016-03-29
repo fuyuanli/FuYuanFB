@@ -2,6 +2,11 @@
 define('RECAPTCHA_SECRET_KEY', '');
 define('RECAPTCHA_SITE_KEY', '');
 
+$app_id = "";
+$app_secret = "";
+$access_token= "";
+
+
 function recaptcha_vertify($response)
 {
     $url = 'https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s';
@@ -25,19 +30,48 @@ function conn_fb($message){
     require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
     $fb = new Facebook\Facebook([
-        'app_id'     => '自行替換',
-        'app_secret' => '自行替換',
+        'app_id'     => '',
+        'app_secret' => '',
         'default_graph_version' => 'v2.5',
     ]);
 
-    $fb->setDefaultAccessToken('自行替換access_token');
+    $fb->setDefaultAccessToken('');
 
     $data = [
         "message" => $message
     ];
-    $response = $fb->post('/自行替換粉絲專頁ID/feed', $data);
+    $response = $fb->post('//feed', $data);
+
+    $post_id = $response->getDecodedBody();
+    return $post_id['id'];
 
 
 }
+function fb_photo(){
+    session_start();
+    define('FACEBOOK_SDK_V4_SRC_DIR', __DIR__ . '/facebook-sdk-v5/');
+    require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
+
+    $fb = new Facebook\Facebook([
+        'app_id'     => '',
+        'app_secret' => '',
+        'default_graph_version' => 'v2.5',
+    ]);
+
+    $fb->setDefaultAccessToken('');
+
+    $data = [
+        "message" => '貼圖測試',
+        "source" => $fb->fileToUpload('./XD.png')
+    ];
+    $response = $fb->post('/ID/photos', $data);
+
+    $post_id = $response->getDecodedBody();
+    return $post_id['id'];
+
+
+}
+
+
 
 ?>
