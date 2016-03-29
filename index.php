@@ -37,8 +37,6 @@ if(isset($_POST["submit"])){
     <body>
         <div class="container">
             <center><h1>匿名發文</h1></center>
-            <div class="fb-page" data-href="https://www.facebook.com/%E5%8C%BF%E5%90%8D-249199682087301/?fref=nf" data-tabs="timeline" data-width="100%" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"></div>
-
 
             <form method="post" name="db" id="db" role="form">
                 <div class="form-group">
