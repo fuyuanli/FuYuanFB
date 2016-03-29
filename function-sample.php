@@ -40,7 +40,7 @@ function conn_fb($message){
     $data = [
         "message" => $message
     ];
-    $response = $fb->post('//feed', $data);
+    $response = $fb->post('/PageID/feed', $data);
 
     $post_id = $response->getDecodedBody();
     return $post_id['id'];
